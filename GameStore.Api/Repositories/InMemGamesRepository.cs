@@ -2,7 +2,15 @@ using GameStore.Api.Entities;
 
 namespace GameStore.Api.Repositories;
 
-public class InMemGamesRepository
+public interface IGamesRepository
+{
+    void Create(Game game);
+    void Delete(int id);
+    Game? Get(int id);
+    IEnumerable<Game> GetAll();
+    void Update(Game updateGame);
+}
+public class InMemGamesRepository : IGamesRepository
 {
     private readonly List<Game> games = new()
     {
